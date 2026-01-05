@@ -11,3 +11,4 @@ graph TD
     E --> C
     C --> F[Oikeudenkäynti ja ratkaisu]
     F --> G[EBOOK-raportin arkistointi]
+```
