@@ -1,0 +1,10 @@
+extends: substitution
+message: "Consider using a modern term for '%s'."
+level: suggestion
+ignorecase: true
+swap:
+  heretofore: previously
+  therein: in there
+  witnesseth: shows
+  vessel: ship (or keep for formal context)
+  seaman: mariner or crew member

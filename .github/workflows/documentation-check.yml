@@ -1,0 +1,26 @@
+name: Documentation Quality Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Vale Linter
+        uses: errata-ai/vale-action@v2
+        with:
+          files: docs/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Docusaurus
+        run: |
+          npm install
+          npm run build
