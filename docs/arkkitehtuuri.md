@@ -15,3 +15,22 @@ C4Context
     Rel(user, portal, "Lukee ja hakee tietoa")
     Rel(portal, github, "Hakee päivitykset ja sisällön")
 ```
+
+# Portaalin tekninen rakenne
+
+Tämä C4-malli kuvaa, miten portaali on rakennettu.
+
+```mermaid
+C4Container
+    title Konttikaavio: Maritime Legal Portal
+    
+    Person(writer, "Kirjoittaja (Sinä)", "Luo sisältöä ja sääntöjä.")
+    
+    Container(docusaurus, "Docusaurus App", "React/Node.js", "Generoi staattisen sivuston ja tarjoaa hakutoiminnon.")
+    ContainerDb(markdown, "Markdown Files", "Git/FileSystem", "Sisältää varsinaisen tekstidatan ja säännöt.")
+    Container(actions, "GitHub Actions", "CI/CD Pipeline", "Ajaa Valen ja rakentaa sivuston automaattisesti.")
+
+    Rel(writer, markdown, "Kirjoittaa", "VS Code")
+    Rel(markdown, actions, "Triggeröi buildin", "Push")
+    Rel(actions, docusaurus, "Rakentaa")
+```
