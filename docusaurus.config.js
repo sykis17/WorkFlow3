@@ -7,7 +7,6 @@ const config = {
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin linkkeihin
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
-  projectName: 'legal-portal',
 
   presets: [
     [
@@ -24,7 +23,10 @@ const config = {
       },
     ],
   ],
-  
+  themes: ['@docusaurus/theme-mermaid'],
+  markdown: {
+    mermaid: true,
+  },
   themeConfig: {
     navbar: {
       title: 'Maritime Portal',

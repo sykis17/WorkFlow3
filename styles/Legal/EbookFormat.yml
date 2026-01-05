@@ -1,0 +1,16 @@
+extends: substitution
+message: "Preffered format: '%s'."
+level: warning
+# ignorecase on oletuksena false, mikä on tässä hyvä
+swap:
+  ebook: EBOOK
+  eBook: EBOOK
+  e-book: EBOOK
+  e-Book: EBOOK
+  e book: EBOOK
+  E Book: EBOOK
+  E-book: EBOOK
+  E-Book: EBOOK
+  # Lisätään vielä muutama yleinen väärinkirjoitus
+  Ebook: EBOOK
+  EBook: EBOOK
