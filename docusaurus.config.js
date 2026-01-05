@@ -4,7 +4,7 @@ const config = {
   url: 'https://sykis17.github.io', 
   baseUrl: '/Maritime-Portal/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
   projectName: 'Maritime-Portal',
-  onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin linkkeihin
+  onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin 
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
 
@@ -23,7 +23,27 @@ const config = {
       },
     ],
   ],
-  themes: ['@docusaurus/theme-mermaid'],
+  plugins: [
+    [
+      require.resolve('docusaurus-lunr-search'),
+      {
+        languages: ['en', 'fi'], // Lisää suomi, jos kirjoitat suomeksi!
+        indexBaseUrl: true,
+      },
+    ],
+  ],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true, // TÄMÄ korjattu (poistettu ArrayBlur)
+        language: ["en", "fi"],
+        docsRouteBasePath: "/", 
+        highlightSearchTermsOnTargetPage: true, // Mukava lisä: korostaa hakusanat sivulla
+      },
+    ],
+  ],
   markdown: {
     mermaid: true,
   },
