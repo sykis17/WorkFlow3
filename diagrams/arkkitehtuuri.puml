@@ -1,0 +1,24 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Konttikaavio: Maritime Legal Portal
+
+Person(writer, "Kirjoittaja", "Sinä")
+
+System_Boundary(portal_boundary, "Portaalin ekosysteemi") {
+    Container(markdown, "Markdown-sisältö", "Git/Vale", "Dokumentaatio ja kieliasun säännöt")
+    Container(actions, "GitHub Actions", "CI/CD", "Automaattinen laadunvarmistus")
+    Container(docusaurus, "Docusaurus", "React/Node", "Lopullinen staattinen sivusto")
+}
+
+System_Ext(github, "GitHub Pages", "Hosting-alusta")
+
+' Tässä PlantUML loistaa: Viivat sijoittuvat keskelle ja niitä on helppo ohjata
+Rel(writer, markdown, "Kirjoittaa ja pushaa", "VS Code")
+Rel(markdown, actions, "Triggeröi tarkistuksen", "Webhook")
+Rel(actions, docusaurus, "Buildaa portaalin", "npm run build")
+Rel(docusaurus, github, "Julkaisee", "Deploy")
+
+@enduml

@@ -48,6 +48,9 @@ const config = {
     mermaid: true,
   },
   themeConfig: {
+    mermaid: {
+      theme: {light: 'neutral', dark: 'forest'},
+    },
     navbar: {
       title: 'Maritime Portal',
       items: [
