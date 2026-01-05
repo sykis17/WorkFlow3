@@ -2,7 +2,7 @@ const config = {
   title: 'Maritime-Portal',
   tagline: 'Modernizing Maritime Law',
   url: 'https://sykis17.github.io', 
-  baseUrl: '/Maritime-portal/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
+  baseUrl: '/Maritime-Portal/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin linkkeihin
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
