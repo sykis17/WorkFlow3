@@ -1,0 +1,68 @@
+import React from 'react';
+import Link from '@docusaurus/Link';
+
+export const PortfolionHakemisto = () => {
+  const sivut = [
+    { polku: '/', nimi: 'Etusivu', muokattu: '06.01.2026', tila: 'Valmis', tyyppi: 'Esittely' },
+    { polku: '/tyoaika', nimi: 'Aikalaskimet', muokattu: '05.01.2026', tila: 'Voimassa', tyyppi: 'Työkalu' },
+    { polku: '/koodari', nimi: 'Koodihiekkalaatikko', muokattu: '05.01.2026', tila: 'Beta', tyyppi: 'Demo' },
+    { polku: '/tilastot', nimi: 'Päästötilastot', muokattu: '04.01.2026', tila: 'Voimassa', tyyppi: 'Visualisointi' },
+    { polku: '/checklist', nimi: 'Tarkastuslista', muokattu: '03.01.2026', tila: 'Päivitetty', tyyppi: 'Lomake' },
+    { polku: '/arkkitehtuuri', nimi: 'Arkkitehtuuri', muokattu: '06.01.2026', tila: 'Valmis', tyyppi: 'Esittely' },
+    { polku: '/simulaattori', nimi: 'Säädös-simulaattori', muokattu: '06.01.2026', tila: 'Valmis', tyyppi: 'Simulaattori' 
+},
+  ];
+
+  const getStatusStyle = (status) => {
+    const styles = {
+      'Valmis': { bg: '#25c2a0', color: 'white' },
+      'Voimassa': { bg: '#1877f2', color: 'white' },
+      'Beta': { bg: '#ffa500', color: 'black' },
+      'Päivitetty': { bg: '#6c757d', color: 'white' }
+    };
+    return styles[status] || {};
+  };
+
+  return (
+    <div style={{ overflowX: 'auto', marginTop: '20px' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr style={{ backgroundColor: 'var(--ifm-color-emphasis-100)', textAlign: 'left' }}>
+            <th style={{ padding: '12px', borderBottom: '2px solid #ddd' }}>Sivun nimi</th>
+            <th style={{ padding: '12px', borderBottom: '2px solid #ddd' }}>Tyyppi</th>
+            <th style={{ padding: '12px', borderBottom: '2px solid #ddd' }}>Viimeksi muokattu</th>
+            <th style={{ padding: '12px', borderBottom: '2px solid #ddd' }}>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sivut.map((sivu, idx) => (
+            <tr key={idx} style={{ borderBottom: '1px solid var(--ifm-contents-border-color)' }}>
+              <td style={{ padding: '12px' }}>
+                <Link to={sivu.polku} style={{ fontWeight: 'bold' }}>{sivu.nimi}</Link>
+              </td>
+              <td style={{ padding: '12px', fontSize: '0.9rem' }}>{sivu.tyyppi}</td>
+              <td style={{ padding: '12px', color: 'gray' }}>{sivu.muokattu}</td>
+              <td style={{ padding: '12px' }}>
+                <span style={{
+                  padding: '4px 8px',
+                  borderRadius: '12px',
+                  fontSize: '0.75rem',
+                  fontWeight: 'bold',
+                  ...getStatusStyle(sivu.tila)
+                }}>
+                  {sivu.tila}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+# Portfolion sisällysluettelo
+
+Tältä sivulta löydät kaikki portaalin interaktiiviset osiot ja niiden tilatiedot.
+
+<PortfolionHakemisto />

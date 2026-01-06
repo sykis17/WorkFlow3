@@ -1,0 +1,62 @@
+/* Koko taulukon säiliö */
+.tableContainer { 
+  margin: 2rem 0; 
+}
+
+/* Hakukenttä */
+.searchInput {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--ifm-color-primary); /* Käyttää sivuston pääväriä (vihreä) */
+  border-radius: 8px;
+  background-color: var(--ifm-background-color); /* Mukautuu tummaan/vaaleaan teemaan */
+  color: var(--ifm-font-color-base); /* Tekstin väri mukautuu */
+  font-size: 1rem;
+}
+
+/* Taulukon perusasetukset */
+.table { 
+  width: 100%; 
+  border-collapse: separate; /* Mahdollistaa pyöristetyt kulmat */
+  border-spacing: 0;
+  border: 1px solid var(--ifm-contents-border-color);
+  border-radius: 8px;
+  overflow: hidden; /* Pitää kulmat siistinä */
+}
+
+/* Otsikkorivi (Rivi 2/4 korjaus) */
+.table th { 
+  cursor: pointer; 
+  background-color: var(--ifm-color-primary); /* Käyttää Docusauruksen omaa vihreää */
+  color: white; 
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Solut */
+.table td { 
+  border-bottom: 1px solid var(--ifm-contents-border-color); 
+  padding: 12px 15px;
+  color: var(--ifm-font-color-base); /* Varmistaa että teksti erottuu taustasta */
+}
+
+/* Vaihtuvat rivivärit (Rivi 2 ja 4 jne.) */
+/* Käytetään läpinäkyvää harmaata, jotta se toimii sekä vaalealla että tummalla pohjalla */
+.table tr:nth-child(even) { 
+  background-color: rgba(0, 0, 0, 0.03); 
+}
+
+/* Tumman teeman hienosäätö automaattisesti */
+[data-theme='dark'] .table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Hover-efekti: Rivi korostuu kun hiiri on päällä */
+.table tr:hover {
+  background-color: rgba(37, 194, 160, 0.1); 
+}

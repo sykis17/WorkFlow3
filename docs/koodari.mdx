@@ -1,0 +1,84 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Interaktiiviset Demot
+
+Tässä osiossa voit kokeilla portaalin dynaamisia ominaisuuksia. Jokainen välilehti sisältää muokattavan koodiesimerkin.
+
+<Tabs>
+  <TabItem value="haku" label="🔍 Hakulogiikka" default>
+    <p>Tämä demoaa reaaliaikaista säädöshakua datalistasta.</p>
+    ```jsx live
+    function SäädösHaku() {
+      const [haku, setHaku] = React.useState("");
+      const lait = ["Merilaki", "Laivaväkilaki", "VTS-laki", "Ympäristölaki"];
+      const tulokset = lait.filter(l => l.toLowerCase().includes(haku.toLowerCase()));
+      
+      return (
+        <div style={{ padding: '10px' }}>
+          <input 
+            placeholder="Kirjoita etsimäsi laki..." 
+            onChange={(e) => setHaku(e.target.value)}
+            style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+          />
+          <div style={{ marginTop: '10px' }}>
+            {tulokset.map(l => <div key={l}>📜 {l}</div>)}
+          </div>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="status" label="🚨 Tilahallinta">
+    <p>Muuta aluksen tilaa painikkeilla nähdäksesi, miten käyttöliittymä reagoi.</p>
+    ```jsx live
+    function AlertTester() {
+      const [status, setStatus] = React.useState("Normal");
+      const teemat = { 
+        Normal: { bg: "#25c2a022", border: "#25c2a0" }, 
+        Warning: { bg: "#ffa50022", border: "#ffa500" }, 
+        Danger: { bg: "#ff4d4d22", border: "#ff4d4d" } 
+      };
+      
+      return (
+        <div style={{ 
+          padding: '20px', 
+          backgroundColor: teemat[status].bg, 
+          border: `2px solid ${teemat[status].border}`,
+          borderRadius: '10px',
+          textAlign: 'center'
+        }}>
+          <h3 style={{ color: teemat[status].border }}>Tila: {status}</h3>
+          <button onClick={() => setStatus("Normal")}>Vakio</button>
+          <button onClick={() => setStatus("Warning")} style={{margin: '0 10px'}}>Varoitus</button>
+          <button onClick={() => setStatus("Danger")}>Vaara!</button>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+
+  <TabItem value="laskuri" label="⚖️ Rahtilaskuri">
+    <p>Yksinkertainen työkalu konttien painon arviointiin.</p>
+    ```jsx live
+    function Rahtilaskuri() {
+      const [teu, setTeu] = React.useState(10);
+      return (
+        <div style={{ padding: '10px' }}>
+          <label>Konttien määrä (TEU): </label>
+          <input 
+            type="number" 
+            value={teu} 
+            onChange={(e) => setTeu(e.target.value)}
+            style={{ width: '60px', padding: '5px' }}
+          />
+          <p style={{ marginTop: '15px', fontSize: '1.2rem' }}>
+            Yhteispaino: <strong>{teu * 14}</strong> tonnia.
+          </p>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+</Tabs>

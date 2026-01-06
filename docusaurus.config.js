@@ -8,39 +8,52 @@ const config = {
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
 
-  presets: [
+i18n: {
+    defaultLocale: 'fi',
+    locales: ['fi', 'en'],
+    localeConfigs: {
+      fi: {
+        label: 'Suomi',
+        direction: 'ltr',
+        htmlLang: 'fi-FI',
+      },
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+      },
+    },
+  },
+
+presets: [
     [
       'classic',
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/', // Tekee dokumenteista etusivun
+          routeBasePath: '/', 
         },
-        blog: false, // POISTAA blogin kokonaan käytöstä
+        blog: false, 
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
   ],
-  plugins: [
-    [
-      require.resolve('docusaurus-lunr-search'),
-      {
-        languages: ['en', 'fi'], // Lisää suomi, jos kirjoitat suomeksi!
-        indexBaseUrl: true,
-      },
-    ],
-  ],
-  themes: [
+
+
+themes: [
     '@docusaurus/theme-mermaid',
+    '@docusaurus/theme-live-codeblock',
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
-        hashed: true, // TÄMÄ korjattu (poistettu ArrayBlur)
-        language: ["en", "fi"],
+        hashed: true,
+        language: ["fi", "en"],
         docsRouteBasePath: "/", 
-        highlightSearchTermsOnTargetPage: true, // Mukava lisä: korostaa hakusanat sivulla
+        // Tämä rivi on kriittinen: se estää pluginia etsimästä kansioita vääristä paikoista
+        indexDocs: true,
+        indexBlog: false,
       },
     ],
   ],
@@ -52,9 +65,17 @@ const config = {
       theme: {light: 'neutral', dark: 'forest'},
     },
     navbar: {
-      title: 'Maritime Portal',
+      title: 'Legal Portal',
       items: [
-        // Poista täältä kaikki missä lukee 'blog' tai 'intro'
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
+          type: 'html',
+          position: 'right',
+          value: '<button onclick="window.print()" style="cursor:pointer; background: #25c2a0; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; margin-left: 10px;">Lataa PDF / Tulosta</button>',
+        },
       ],
     },
   },

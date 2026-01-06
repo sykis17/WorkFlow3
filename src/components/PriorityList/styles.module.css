@@ -1,0 +1,38 @@
+.container {
+  background-color: var(--ifm-background-surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-contents-border-color);
+  margin: 2rem 0;
+}
+
+.listItem {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-contents-border-color);
+  padding: 1rem;
+  margin: 10px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition: transform 0.2s ease;
+}
+
+.listItem:active {
+  cursor: grabbing;
+  border-color: var(--ifm-color-primary);
+}
+
+.dragHandle {
+  margin-right: 15px;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 1rem;
+}

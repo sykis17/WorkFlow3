@@ -1,41 +1,56 @@
-# Website
+# Maritime Legal Portal – Moderni Merioikeuden Dokumentaatio
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Tämä projekti on prototyyppi modernisoidusta merioikeuden portaalista. Sen tavoitteena on muuttaa perinteinen, vaikeaselkoinen lakiteksti saavutettavaksi, haettavaksi ja visuaalisesti selkeäksi dokumentaatioksi.
 
-## Installation
+🚀 **Live Demo:** [Linkki GitHub Pages -sivustollesi]
 
-```bash
-yarn
-```
+## 🛠️ Teknologiat & Menetelmät
 
-## Local Development
+Projektissa on hyödynnetty alan standardeja "Documentation-as-Code" -menetelmiä:
 
-```bash
-yarn start
-```
+- **Docusaurus (React):** Staattinen sivustogeneraattori, joka tarjoaa nopean haun ja saavutettavuuden.
+- **Vale (Linter):** Automaattinen tyylitarkistin, joka varmistaa kielen selkeyden ja teknisen laadun.
+- **PlantUML & C4-malli:** Arkkitehtuurin visualisointi koodina (Diagrams-as-Code).
+- **GitHub Actions:** CI/CD-putki, joka ajaa automaattiset testit ja julkaisee sivuston jokaisen muutoksen jälkeen.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## 🛠️ Interaktiiviset Demo-ominaisuudet
 
-## Build
+Tämä portaali ei ole vain staattista tekstiä, vaan se sisältää moderneja Documentation-as-Code -ratkaisuja:
 
-```bash
-yarn build
-```
+1. **Dynaaminen Datataulukko (React):** - Toteutettu MDX-komponenttina.
+   - Sisältää reaaliaikaisen suodatuksen ja sarakkeiden järjestämisen.
+   - *Teknologiat:* React Hooks (`useState`), CSS Modules.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+2. **Priorisointityökalu (Drag & Drop):**
+   - Käyttäjä voi järjestellä pelastustoimenpiteitä tärkeysjärjestykseen.
+   - Osoittaa kyvyn rakentaa interaktiivisia oppimateriaaleja.
+   - *Teknologiat:* `@dnd-kit/core`, `@dnd-kit/sortable`.
 
-## Deployment
+3. **Live Code Editor:**
+   - Mahdollistaa koodin tai säädösmallien muokkaamisen suoraan selaimessa reaaliaikaisella esikatselulla.
+   - *Teknologiat:* `@docusaurus/theme-live-codeblock`, `react-live`.
 
-Using SSH:
+4. **Arkkitehtuuri-as-Code:**
+   - Kaaviot on piirretty Mermaid- ja PlantUML-kielillä, mikä mahdollistaa dokumentaation ja kuvien versionhallinnan samassa paikassa.
 
-```bash
-USE_SSH=true yarn deploy
-```
+## 🏗️ Arkkitehtuuri
 
-Not using SSH:
+Järjestelmän rakenne on kuvattu C4-mallin mukaisesti. Tekniset kaaviot löytyvät portaalin [Arkkitehtuuri-sivulta].
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+### Prosessin kulku
+Portaali sisältää interaktiivisia prosessikuvauksia, jotka auttavat merimiehiä ymmärtämään oikeusprosesseja askel askeleelta, poistaen perinteisen lakitekstin kankeuden.
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## 📈 Tärkeimmät ominaisuudet
+
+- **Haku:** Nopea, paikallinen haku dokumentaation sisällä.
+- **Laadunvarmistus:** Vale-linter tarkistaa, että teksti noudattaa sille asetettuja selkeän kielen sääntöjä.
+- **Versiohallinta:** Kaikki sisältö ja kaaviot hallinnoidaan Gitillä, mikä mahdollistaa täyden muutoshistorian.
+
+## 🚀 Kehitysympäristön pystytys
+
+1. Kloonaa repo: `git clone [reposi-url]`
+2. Asenna riippuvuudet: `npm install`
+3. Käynnistä kehityspalvelin: `npm start`
+
+---
+*Tämä projekti on osa teknisen dokumentoinnin portfoliotani.*

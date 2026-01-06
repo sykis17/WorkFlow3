@@ -1,0 +1,75 @@
+.calcContainer {
+  background: var(--ifm-background-surface-color);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid var(--ifm-contents-border-color);
+  max-width: 400px;
+  margin: 2rem 0;
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.info { font-size: 0.9rem; color: var(--ifm-color-emphasis-700); }
+
+.inputRow { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  margin-bottom: 12px; 
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.inputRow input { 
+  width: 70px; 
+  padding: 10px; 
+  border-radius: 6px; 
+  border: 1px solid var(--ifm-contents-border-color);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.actionButtons {
+  margin: 20px 0;
+  border-top: 1px solid var(--ifm-contents-border-color);
+  padding-top: 15px;
+}
+
+.addBtn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 2px dashed var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.addBtn:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+.resultBox { 
+  padding: 15px; 
+  background: var(--ifm-color-primary); 
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold; 
+  font-size: 1.4rem;
+}

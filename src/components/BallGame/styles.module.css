@@ -1,0 +1,22 @@
+.gameArea {
+  width: 200px;
+  height: 200px;
+  background: #1e293b; /* Tumma meri, jotta pallo erottuu */
+  margin: 20px auto;
+  position: relative;
+  border: 4px solid #38bdf8;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background: #f87171; /* Kirkas punainen */
+  border: 2px solid white; /* Valkoiset reunat parantavat erottuvuutta */
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10; /* Varmistetaan, että on päällimmäisenä */
+  box-shadow: 0 0 10px #ef4444; /* Hehkuefekti */
+  pointer-events: none; /* Hiiri menee pallon "läpi" alueelle */
+}

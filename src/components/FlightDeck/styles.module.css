@@ -1,0 +1,150 @@
+.cockpit {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+.instrumentGrid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.instrument {
+  width: 150px;
+  height: 150px;
+  border: 4px solid #444;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden; /* Tämä leikkaa kaiken ympyrän ulkopuolelta pois */
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tämä poistaa sen häiritsevän laatikon ja tekee tekstistä ilmavamman */
+.instrLabel {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: #00ff00;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  background: transparent; /* Poistetaan taustaväri, joka näkyi laatikkona */
+  z-index: 20;
+}
+
+.horizon {
+  width: 400px; /* Kasvatettu kokoa */
+  height: 800px; /* Kasvatettu kokoa */
+  position: absolute;
+  top: -325px; /* Säädetty uuden koon mukaan */
+  left: -125px;
+  transition: transform 0.1s linear;
+  display: flex;
+  flex-direction: column;
+}
+
+.sky { 
+  background: linear-gradient(to bottom, #1e40af, #3b82f6); 
+  height: 400px; 
+}
+
+.ground { 
+  background: linear-gradient(to bottom, #78350f, #451a03); 
+  height: 400px; 
+  border-top: 2px solid white; /* Horisonttiviiva */
+}
+
+.planeMarker {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  right: 15%;
+  height: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Tehdään keltaiset "siivet" merkiksi keskelle */
+.planeMarker::before, .planeMarker::after {
+  content: '';
+  width: 40px;
+  height: 4px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.compassDisk {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  transition: transform 0.1s linear;
+}
+
+.compassDisk span {
+  position: absolute;
+  font-weight: bold;
+  color: #00ff00;
+}
+
+.north { top: 10px; left: 50%; transform: translateX(-50%); }
+.east  { right: 10px; top: 50%; transform: translateY(-50%); }
+.south { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.west  { left: 10px; top: 50%; transform: translateY(-50%); }
+
+.pointer {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fbbf24;
+  z-index: 20;
+  font-size: 1.2rem;
+}
+
+.instrLabel {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+}
+
+.digitalPanel {
+  background: #000;
+  padding: 15px;
+  border: 2px solid #00ff00;
+  min-width: 120px;
+  text-align: left;
+}
+
+.stallWarning {
+  color: #ff4d4d;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 5px;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.stat { font-size: 1.2rem; margin: 5px 0; }
+.controlsHint { font-size: 0.8rem; color: #888; margin-top: 15px; }

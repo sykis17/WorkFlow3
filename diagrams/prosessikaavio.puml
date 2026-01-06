@@ -1,0 +1,20 @@
+@startuml Prosessikaavio
+skinparam shadowing false
+skinparam monochrome false
+skinparam PackageStyle rectangle
+
+title Oikeusprosessin kulku merellä
+
+start
+:Epäoikeudenmukaisuus tapahtuu;
+:Dokumentoi tapahtuma lokikirjaan;
+
+if (Kapteeni osallinen?) then (kyllä)
+  :Ota yhteys varustamoon suoraan;
+else (ei)
+  :Raportoi kapteenille;
+endif
+
+:Ota yhteys ammattiliittoon/ITF;
+stop
+@enduml

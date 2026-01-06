@@ -33,19 +33,3 @@ sequenceDiagram
     L-->>V: Raportti tarkastetaan satamassa
     V->>K: Määrää sakon tai korjauksen
 ```
-@startuml
-!include [https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml](https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml)
-
-skinparam shadowing false
-
-start
-:Epäoikeudenmukaisuus tapahtuu;
-:Dokumentoi tapahtuma lokikirjaan;
-if (Kapteeni osallinen?) then (kyllä)
-  :Ota yhteys varustamoon suoraan;
-else (ei)
-  :Raportoi kapteenille;
-endif
-:Ota yhteys ammattiliittoon/ITF;
-stop
-@enduml
