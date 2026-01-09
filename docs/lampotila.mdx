@@ -1,0 +1,25 @@
+---
+id: lampotila
+slug: /lampotila
+title: Lämpötila ja Työaika
+---
+
+import TemperatureConverter from '@site/src/components/TemperatureConverter';
+import TimeCalculator from '@site/src/components/TimeCalculator';
+import TimeDiffCalculator from '@site/src/components/TimeDiffCalculator';
+
+## Lämpötilamuunnin
+<TemperatureConverter />
+
+---
+
+## Aikatyökalut {#Aikatyokalut}
+
+Nämä työkalut on suunniteltu helpottamaan työaikojen ja vuorojen laskentaa.
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <TimeCalculator />
+  <TimeDiffCalculator />
+</div>
+
+---

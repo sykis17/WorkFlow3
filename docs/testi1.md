@@ -2,6 +2,18 @@
 slug: /
 ---
 
+import Hero from '@site/src/components/Hero';
+import Skills from '@site/src/components/Skills';
+
+# Tervetuloa portfoliooni
+
+Tässä on listaus osaamisestani:
+
+<Hero />
+<Skills />
+
+
+
 The Project Gutenberg eBook of The Seaman's Friend
     
 

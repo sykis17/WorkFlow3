@@ -1,0 +1,195 @@
+---
+id: koonti
+title: Media & Prosessit
+slug: /koonti
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import EmissionChart from '@site/src/components/EmissionChart';
+import Paatos from '@site/src/components/Paatos';
+import GridBoxes from '@site/src/components/GridBoxes';
+
+{/* Tyylikäs otsikko - Vaihtoehto B */}
+<div className="my-10">
+  <p className="text-sm font-bold text-slate-500 mb-2 border-b border-slate-200 pb-2 w-fit pr-12 uppercase tracking-tighter">
+    Visual Assets & Logic
+  </p>
+  <h1 className="m-0 text-5xl md:text-6xl font-black text-slate-950 tracking-tighter leading-[0.9]">
+    Kooste <span className="text-blue-700">& Dokumentaatio</span>
+  </h1>
+</div>
+
+<Tabs defaultValue="kuvat">
+  
+  {/* VÄLILEHTI 1: PNG-KUVAT */}
+  <TabItem value="kuvat" label="🖼️ Kuvat">
+    <div className="space-y-8 mt-6">
+      <section>
+        <h3 className="text-xl font-bold text-slate-800 mb-4">Arkkitehtuurikaavio</h3>
+        <div className="bg-black p-4 rounded-3xl border border-slate-200 flex justify-center">
+            <img 
+                src={useBaseUrl('/img/arkkitehtuuri.png')} 
+                alt="Arkkitehtuuri" 
+                className="max-h-[800px] shadow-lg rounded-xl"
+            />
+        </div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-bold text-slate-800 mb-4">Prosessikuvaus</h3>
+        <img 
+            src={useBaseUrl('/img/prosessikaavio.png')} 
+            alt="Prosessi" 
+            className="max-h-[800px] shadow-lg rounded-xl"
+        />
+      </section>
+    </div>
+  </TabItem>
+
+  {/* VÄLILEHTI 2: SUORA KOODI (INFO & MERMAID) */}
+  <TabItem value="koodi" label="💻 Suora koodi">
+    <div className="mt-6 space-y-10">
+      
+      <section>
+        <h3 className="text-xl font-bold text-slate-800 mb-4 italic text-blue-600">Intro & Ohjeet</h3>
+        :::info Tärkeää huomioitavaa
+        Tämä osio on toteutettu suoralla Markdown-koodilla. :::info-laatikot ovat erinomaisia nostamaan esiin säädösteknisiä yksityiskohtia.
+        :::
+
+        :::tip VINKKI
+        Voit etsiä termejä oikean yläkulman hakupalkista (asennetaan kohta!).
+        :::
+
+        :::danger VAARA
+        Alkuperäinen teksti saattaa sisältää vanhentuneita oikeudellisia neuvoja.
+        :::
+
+        :::caution VAROITUS
+        Ilmoittaa lähenevästä vaarasta.
+        :::
+
+        :::note Otsikko
+        Tämä on yleinen huomio. Käytä antamaan taustatietoja.
+        :::
+
+<div className="bg-slate-950 border-l-4 border-blue-500 p-6 rounded-r-2xl my-6 shadow-xl">
+  <div className="flex items-center gap-3 mb-2">
+    <h4 className="m-0 text-white uppercase tracking-widest text-xs font-black">
+      ⚓Merioikeuden erityishuomio
+    </h4>
+  </div>
+  <p className="text-slate-300 text-sm m-0 leading-relaxed">
+    Tämä tekninen osio käsittelee vain kansainvälisiä vesialueita. Kansalliset säädökset voivat poiketa tästä.
+  </p>
+</div>
+      </section>
+
+      <section>
+        <h3 className="text-xl font-bold text-slate-800 mb-4">Säädöshierarkia (Mermaid)</h3>
+        <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm">
+            ```mermaid
+                graph TD
+                A[Merimies kokee vääryyttä] --> B{Onko laiva satamassa?}
+                B -- Kyllä --> C[Valitus konsulille tai viranomaiselle]
+                B -- Ei --> D[Kirjaus lokikirjaan ja todistajien kerääminen]
+                D --> E[Odotus seuraavaan satamaan]
+                E --> C
+                C --> F[Oikeudenkäynti ja ratkaisu]
+                F --> G[EBOOK-raportin arkistointi]
+            ```
+        </div>
+      </section>
+
+    </div>
+  </TabItem>
+
+  {/* VÄLILEHTI 3: KAAVIOT (TAILWIND FLOW) */}
+  <TabItem value="kaaviot" label="📊 Kaaviot">
+    <div className="mt-6 space-y-12">
+      
+      <section>
+        <h3 className="text-xl font-bold text-slate-800 mb-6">Päätöspuu (Tailwind UI)</h3>
+        <div className="flex flex-col items-center gap-2">
+          <div className="p-5 bg-slate-900 text-white rounded-2xl font-bold text-center w-64 shadow-xl">
+            Säädösanalyysi alkaa
+          </div>
+          <div className="w-1 h-8 bg-slate-200"></div>
+          <div className="p-5 bg-blue-600 text-white rounded-2xl font-bold text-center w-64 shadow-lg">
+            Onko alus > 500 GT?
+          </div>
+          <div className="flex gap-12 mt-2">
+             <div className="flex flex-col items-center">
+               <div className="w-1 h-6 bg-emerald-400"></div>
+               <div className="p-3 bg-emerald-50 text-emerald-700 border-2 border-emerald-400 rounded-xl font-bold">Kyllä</div>
+             </div>
+             <div className="flex flex-col items-center">
+               <div className="w-1 h-6 bg-red-400"></div>
+               <div className="p-3 bg-red-50 text-red-700 border-2 border-red-400 rounded-xl font-bold">Ei</div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+<section>
+      <h3 className="text-xl font-[900] text-slate-900 mb-4 tracking-tight">
+        Data-analyysi <span className="text-blue-600">(Päästötilastot)</span>
+      </h3>
+      
+      {/* Tämä on se "laatikko", jonka sisälle kaavio tulee */}
+      <div className="p-4 md:p-8 bg-white border border-slate-200 rounded-[2rem] shadow-sm overflow-hidden">
+        {/* Kutsutaan varsinaista komponenttia tässä */}
+        <EmissionChart />
+      </div>
+
+      {/* Lisätään vielä pieni selite alle, jos haluat */}
+      <div className="mt-4">
+        <p className="text-xs text-slate-400 font-medium tracking-wide uppercase">
+          Lähde: Aluksen automaatiodata / tammikuu 2026
+        </p>
+      </div>
+    </section>
+    
+<section>
+      <h3 className="text-xl font-[900] text-slate-900 mb-4 tracking-tight">
+        Data-analyysi <span className="text-blue-600">(Päästötilastot)</span>
+      </h3>
+      
+      {/* Tämä on se "laatikko", jonka sisälle kaavio tulee */}
+      <div className="p-4 md:p-8 bg-white border border-slate-200 rounded-[2rem] shadow-sm overflow-hidden">
+        {/* Kutsutaan varsinaista komponenttia tässä */}
+        <Paatos />
+      </div>
+
+      {/* Lisätään vielä pieni selite alle, jos haluat */}
+      <div className="mt-4">
+        <p className="text-xs text-slate-400 font-medium tracking-wide uppercase">
+          Lähde: Aluksen automaatiodata / tammikuu 2026
+        </p>
+      </div>
+    </section>
+
+<section>
+      <h3 className="text-xl font-[900] text-slate-900 mb-4 tracking-tight">
+        Data-analyysi <span className="text-blue-600">(Päästötilastot)</span>
+      </h3>
+      
+      {/* Tämä on se "laatikko", jonka sisälle kaavio tulee */}
+      <div className="p-4 md:p-8 bg-white border border-slate-200 rounded-[2rem] shadow-sm overflow-hidden">
+        {/* Kutsutaan varsinaista komponenttia tässä */}
+        <GridBoxes />
+      </div>
+
+      {/* Lisätään vielä pieni selite alle, jos haluat */}
+      <div className="mt-4">
+        <p className="text-xs text-slate-400 font-medium tracking-wide uppercase">
+          Lähde: Aluksen automaatiodata / tammikuu 2026
+        </p>
+      </div>
+    </section>
+
+    </div>
+  </TabItem>
+
+</Tabs>

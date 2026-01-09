@@ -1,0 +1,101 @@
+import React from 'react';
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+{/* Tyylikäs otsikko (Vaihtoehto B) */}
+<div className="my-10">
+  <p className="text-sm font-bold text-slate-500 mb-2 border-b border-slate-200 pb-2 w-fit pr-12 uppercase tracking-tighter">
+    Interactive Lab & Demos
+  </p>
+  <h1 className="m-0 text-5xl md:text-6xl font-black text-slate-950 tracking-tighter leading-[0.9]">
+    Interaktiiviset <span className="text-blue-700">Työkalut</span>
+  </h1>
+</div>
+
+:::tip Kokeile itse
+Kaikki alla olevat työkalut ovat täysin toiminnallisia demoja. Klikkaa korttia avataksesi työkalun.
+:::
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+  {/* PELIT & SIMULAATIOT */}
+  <Link to={useBaseUrl('/lentokone')} className="no-underline group">
+    <div className="h-full p-6 bg-black border border-slate-200 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">✈️</div>
+      <h3 className="text-xl font-black text-slate-900 group-hover:text-blue-700">Lentokonesimulaatio</h3>
+      <p className="text-sm text-slate-500">MDX-pohjainen interaktiivinen lento-ohjain.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Pelaa →</span>
+    </div>
+  </Link>
+
+  {/* KOODARI / LIVE EDITOR */}
+  <Link to={useBaseUrl('/koodari')} className="no-underline group">
+    <div className="h-full p-6 bg-slate-900 border border-slate-800 rounded-3xl transition-all group-hover:shadow-2xl group-hover:scale-[1.02]">
+      <div className="text-3xl mb-4">💻</div>
+      <h3 className="text-xl font-black text-white">Live Editori</h3>
+      <p className="text-sm text-slate-500">Muokkaa koodia hiekkalaatikossa ja näe tulokset heti.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-emerald-400">Kokeile →</span>
+    </div>
+  </Link>
+
+  {/* CHECKLIST & PRIORITEETIT */}
+  <Link to={useBaseUrl('/prioritylist')} className="no-underline group">
+    <div className="h-full p-6 bg-slate-900 border border-slate-800 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">📋</div>
+      <h3 className="text-xl font-black text-slate-900 group-hover:text-blue-700">Priority List</h3>
+      <p className="text-sm text-slate-500">Tehtävien hallinta ja priorisointityökalu.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Kokeile →</span>
+    </div>
+  </Link>
+
+  {/* SÄÄDÖKSET / AIKAJANA */}
+  <Link to={useBaseUrl('/timeline')} className="no-underline group">
+    <div className="h-full p-6 bg-blue-50 border border-blue-100 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">⏳</div>
+      <h3 className="text-xl font-black text-blue-900">Säädösaikajana</h3>
+      <p className="text-sm text-slate-500">Interaktiivinen aikajana merioikeuden kehityksestä.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Kokeile →</span>
+    </div>
+  </Link>
+
+    {/* SÄÄDÖKSET / AIKAJANA */}
+  <Link to={useBaseUrl('/saadokset')} className="no-underline group">
+    <div className="h-full p-6 bg-blue-50 border border-blue-100 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">⏳</div>
+      <h3 className="text-xl font-black text-blue-900">Lista säädöksistä</h3>
+      <p className="text-sm text-slate-500">Interaktiivinen lista eri säädöksistä.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Kokeile →</span>
+    </div>
+  </Link>
+
+    {/* PELI */}
+  <Link to={useBaseUrl('/peli')} className="no-underline group">
+    <div className="h-full p-6 bg-black border border-blue-100 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">⏳</div>
+      <h3 className="text-xl font-black text-blue-900">Asemmointi Peli</h3>
+      <p className="text-sm text-slate-500">Interaktiivinen tarkkuus peli.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Pelaa →</span>
+    </div>
+  </Link>
+
+    {/* CHECKLIST */}
+  <Link to={useBaseUrl('/checklist')} className="no-underline group">
+    <div className="h-full p-6 bg-blue-50 border border-blue-100 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">⏳</div>
+      <h3 className="text-xl font-black text-blue-900">Checklist</h3>
+      <p className="text-sm text-slate-500">Interaktiivinen tarkastuslista.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Kokeile →</span>
+    </div>
+  </Link>
+
+      {/* Säädössimulaattori */}
+  <Link to={useBaseUrl('/simulaattori')} className="no-underline group">
+    <div className="h-full p-6 bg-blue-50 border border-blue-100 rounded-3xl transition-all group-hover:border-blue-500 group-hover:shadow-xl">
+      <div className="text-3xl mb-4">⏳</div>
+      <h3 className="text-xl font-black text-blue-900">Säädös-simulaattori</h3>
+      <p className="text-sm text-slate-500">Interaktiivinen säädös-simulaattori.</p>
+      <span className="text-xs font-black uppercase tracking-widest text-blue-600">Kokeile →</span>
+    </div>
+  </Link>
+
+</div>
