@@ -1,9 +1,10 @@
 const config = {
-  title: 'Maritime-Portal',
+  title: 'Maritime Portal',
   tagline: 'Modernizing Maritime Law',
   url: 'https://sykis17.github.io', 
   baseUrl: '/Maritime-Portal/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
   projectName: 'Maritime-Portal',
+  trailingSlash: false,
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin 
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
@@ -30,12 +31,12 @@ presets: [
       'classic',
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
           routeBasePath: '/', 
         },
         blog: false, 
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       },
     ],
