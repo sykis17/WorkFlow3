@@ -1,25 +1,13 @@
 ---
 id: lampotila
 slug: /lampotila
-title: Lämpötila ja Työaika
+title: Työnjohdon komentokeskus
 ---
 
-import TemperatureConverter from '@site/src/components/TemperatureConverter';
-import TimeCalculator from '@site/src/components/TimeCalculator';
-import TimeDiffCalculator from '@site/src/components/TimeDiffCalculator';
+import MonitoringView from '@site/src/components/MonitoringView';
 
-## Lämpötilamuunnin
-<TemperatureConverter />
+Tervetuloa reaaliaikaiseen seurantaan. Tässä näkymässä työnjohto voi seurata kohteiden edistymistä ja reagoida poikkeamiin välittömästi.
 
----
-
-## Aikatyökalut {#Aikatyokalut}
-
-Nämä työkalut on suunniteltu helpottamaan työaikojen ja vuorojen laskentaa.
-
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-  <TimeCalculator />
-  <TimeDiffCalculator />
+<div className="margin-vert--lg">
+  <MonitoringView />
 </div>
-
----

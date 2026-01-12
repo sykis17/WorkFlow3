@@ -33,104 +33,94 @@ export default function ColorPalette() {
     navigator.clipboard.writeText(tailwindClass);
   };
 
-  // Pikanapit mustalle ja valkoiselle
   const setQuickTextColor = (type) => {
-    const color = type === 'white' ? '#ffffff' : '#0f172a';
+    const color = type === 'white' ? '#ffffff' : '#1c1917'; // stone-900 mustan sijaan
     setTextStyle({ color: color });
-    navigator.clipboard.writeText(type === 'white' ? 'text-white' : 'text-slate-950');
+    navigator.clipboard.writeText(type === 'white' ? 'text-white' : 'text-stone-900');
   };
 
   return (
     <div className="space-y-12 pb-20">
       
-      {/* 1. VERTAILUKORTTI */}
-      <div className="bg-slate-900 p-4 md:p-8 rounded-[3.5rem] border border-slate-200 shadow-2xl overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-80 rounded-[2.5rem] overflow-hidden shadow-inner border border-slate-100">
-          <div className={`${bg1} p-10 flex flex-col justify-center transition-all duration-700 ${previewFont}`} style={textStyle}>
-            <h3 className="text-4xl font-black m-0 italic tracking-tighter uppercase leading-none">Style A</h3>
-            <p className="mt-2 text-sm opacity-80 font-medium tracking-wide italic uppercase tracking-widest">{bg1}</p>
+      {/* 1. VERTAILUKORTTI - Taustana Stone-300 vaaleassa tilassa */}
+      <div className="bg-stone-300 dark:bg-stone-900/50 p-4 md:p-10 rounded-[4rem] border border-stone-400/30 shadow-2xl transition-colors duration-500">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-96 rounded-[3rem] overflow-hidden shadow-2xl border border-stone-400/20">
+          <div className={`${bg1} p-12 flex flex-col justify-center transition-all duration-700 ${previewFont}`} style={textStyle}>
+            <h3 className="text-5xl font-black m-0 italic tracking-tighter uppercase leading-tight">Maritime</h3>
+            <p className="mt-4 text-sm font-bold opacity-80 tracking-[0.2em] uppercase italic">{bg1}</p>
           </div>
-          <div className={`${bg2} p-10 flex flex-col justify-center transition-all duration-700 ${previewFont}`} style={textStyle}>
-            <h3 className="text-4xl font-black m-0 italic tracking-tighter uppercase leading-none">Style B</h3>
-            <p className="mt-2 text-sm opacity-80 font-medium tracking-wide italic uppercase tracking-widest">{bg2}</p>
+          <div className={`${bg2} p-12 flex flex-col justify-center transition-all duration-700 ${previewFont}`} style={textStyle}>
+            <h3 className="text-5xl font-black m-0 italic tracking-tighter uppercase leading-tight">Portal</h3>
+            <p className="mt-4 text-sm font-bold opacity-80 tracking-[0.2em] uppercase italic">{bg2}</p>
           </div>
         </div>
 
         {/* OHJAIMET */}
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-6 px-4">
-          
-          {/* Valitsin: Mitä muokataan */}
-          <div className="flex bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-            {['bg1', 'bg2'].map((t) => (
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 px-4">
+          <div className="flex bg-stone-400/20 backdrop-blur-sm p-1.5 rounded-2xl border border-stone-400/30">
+            {['bg1', 'bg2', 'text'].map((t) => (
               <button 
                 key={t}
                 onClick={() => setActiveTarget(t)}
-                className={`px-4 py-2.5 text-[9px] font-black uppercase tracking-widest rounded-xl transition-all ${activeTarget === t ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`px-5 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${activeTarget === t ? 'bg-white text-stone-900 shadow-lg scale-105' : 'text-stone-600 hover:text-stone-800'}`}
               >
                 {t === 'text' ? 'Teksti' : `Pohja ${t.slice(-1)}`}
               </button>
             ))}
           </div>
 
-          {/* UUSI: Musta/Valkoinen pika-asetus */}
-          <div className="flex gap-2 items-center">
-            <span className="text-[9px] font-black uppercase text-slate-300 tracking-widest">Pikavalinta tekstille:</span>
-            <button 
-              onClick={() => setQuickTextColor('white')}
-              className="px-3 py-1.5 bg-white border border-slate-200 text-slate-900 text-[9px] font-black rounded-lg shadow-sm hover:scale-105 transition-transform uppercase"
-            >
-              Valkoinen
-            </button>
-            <button 
-              onClick={() => setQuickTextColor('black')}
-              className="px-3 py-1.5 bg-slate-900 text-white text-[9px] font-black rounded-lg shadow-sm hover:scale-105 transition-transform uppercase"
-            >
-              Musta
-            </button>
+          <div className="flex gap-3 items-center">
+            <button onClick={() => setQuickTextColor('white')} className="w-10 h-10 bg-white border-2 border-white rounded-full shadow-lg hover:scale-110 transition-transform active:scale-90" title="Valkoinen teksti" />
+            <button onClick={() => setQuickTextColor('black')} className="w-10 h-10 bg-stone-900 border-2 border-stone-700 rounded-full shadow-lg hover:scale-110 transition-transform active:scale-90" title="Tumma teksti" />
           </div>
 
+          <div className="font-mono text-[9px] text-stone-500 uppercase tracking-widest bg-stone-400/10 px-6 py-3 rounded-full border border-stone-400/20">
+            Copy on click
+          </div>
         </div>
       </div>
 
-      {/* 2. FONTTITAULUKKO (Hover) */}
-      <section>
-        <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300 mb-6 ml-2 italic">Valitse Fontti</h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+      {/* 2. FONTTIKORTIT */}
+      <section className="px-2">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-8 italic">Typography Selection</h4>
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
           {FONTS.map((f) => (
             <div 
               key={f.name}
               onClick={() => setPreviewFont(f.class)}
-              className={`group relative h-20 flex items-center justify-center rounded-2xl border transition-all cursor-pointer overflow-hidden
-                ${previewFont === f.class ? 'border-blue-500 bg-blue-50/50 ring-4 ring-blue-50' : 'border-slate-100 bg-slate-50 hover:border-slate-300'}`}
+              className={`group relative h-24 flex items-center justify-center rounded-[1.5rem] border-2 transition-all cursor-pointer shadow-sm
+                ${previewFont === f.class 
+                  ? 'border-stone-800 bg-white shadow-xl -translate-y-1' 
+                  : 'border-stone-200 bg-stone-100 hover:border-stone-400 hover:bg-white'}`}
             >
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 z-10 px-2 text-center">
-                <span className="text-[12px] font-black uppercase tracking-tighter text-blue-600 leading-tight">{f.name}</span>
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-stone-900/95 z-10 rounded-[1.3rem] px-2">
+                <span className="text-[8px] font-black uppercase tracking-tighter text-white leading-tight">{f.name}</span>
               </div>
-              <span className={`${f.class} text-xl text-slate-500 group-hover:scale-150 transition-all`}>Aa</span>
+              <span className={`${f.class} text-2xl text-stone-800 group-hover:blur-[1px]`}>Aa</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* 3. VÄRITAULUKKO */}
-      <div className="overflow-x-auto rounded-[2rem] border border-slate-100 bg-slate-900 p-4 shadow-sm">
-        <table className="w-full border-separate border-spacing-1">
+      <div className="overflow-x-auto rounded-[3rem] border border-stone-200 bg-white/50 backdrop-blur-md p-6 shadow-xl">
+        <table className="w-full border-separate border-spacing-1.5">
           <thead>
             <tr>
-              <th className="p-2 text-left text-[8px] font-black uppercase text-slate-200 tracking-widest">Väri</th>
-              {SHADES.map(s => <th key={s} className="text-[8px] font-black text-slate-200 tracking-tighter">{s}</th>)}
+              <th className="p-3 text-left text-[9px] font-black uppercase text-stone-400 tracking-[0.2em]">Color System</th>
+              {SHADES.map(s => <th key={s} className="text-[9px] font-black text-stone-300">{s}</th>)}
             </tr>
           </thead>
           <tbody>
             {COLORS.map(color => (
               <tr key={color}>
-                <td className="text-[9px] font-black text-slate-300 pr-4 uppercase tracking-tighter">{color}</td>
+                <td className="text-[10px] font-black text-stone-400 pr-6 uppercase tracking-tighter">{color}</td>
                 {SHADES.map(shade => (
                   <td key={shade}>
                     <button
                       onClick={() => handleColorClick(color, shade)}
                       style={{ backgroundColor: `var(--color-${color}-${shade})` }}
-                      className="w-10 h-10 md:w-11 md:h-11 rounded-lg border border-black/5 hover:scale-125 hover:rotate-6 hover:shadow-xl transition-all cursor-pointer active:scale-90"
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-xl border border-stone-950/10 hover:scale-125 hover:rotate-3 hover:shadow-2xl transition-all cursor-pointer shadow-sm active:scale-75"
                     />
                   </td>
                 ))}

@@ -1,7 +1,13 @@
 ---
 sidebar_position: 1
 ---
+import WorkerDashboard from '@site/src/components/WorkerDashboard';
 
+# Aktiiviset työtehtävät
+
+Tässä on listattu sinulle määritetyt tehtävät tässä kohteessa.
+
+<WorkerDashboard projectId={1} />
 import OperationalDashboard from '@site/src/components/OperationalDashboard';
 
 # Tervetuloa / Welcome

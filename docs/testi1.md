@@ -2,15 +2,17 @@
 slug: /
 ---
 
-import Hero from '@site/src/components/Hero';
-import Skills from '@site/src/components/Skills';
+import RemonttiLogiikka from '@site/src/components/RemonttiLogiikka';
+import WorkerDashboard from '@site/src/components/WorkerDashboard';
+import ProgressBar from '@site/src/components/ProgressBar';
 
-# Tervetuloa portfoliooni
+# Ikkuna-asennus
 
-Tässä on listaus osaamisestani:
+Tässä ohjeet ikkunoiden asennukseen.
 
-<Hero />
-<Skills />
+<ProgressBar />
+<RemonttiLogiikka />
+<WorkerDashboard />
 
 
 
@@ -18,6 +20,16 @@ The Project Gutenberg eBook of The Seaman's Friend
     
 
 
+# Minun Retool-työkaluni
+
+Tässä on reaaliaikainen näkymä tilauksiin:
+
+<iframe 
+  src="https://jessem.retool.com/apps/Untitled" 
+  width="100%" 
+  height="600px" 
+  style={{ border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+</iframe>
 
 heretofore
 

@@ -7,29 +7,55 @@ const sidebars = {
       label: '🏠 Esittely',
     },
     {
-      type: 'doc',
-      id: 'koonti',
-      label: '📊 Media & Prosessit',
+      type: 'category',
+      label: '👷 KENTTÄTYÖT',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'koonti',
+          label: 'Työntekijän Dashboard',
+        },
+      ],
     },
     {
-      type: 'doc',
-      id: 'interaktiiviset',
-      label: '🎮 Interaktiiviset Työkalut',
+      type: 'category',
+      label: '👔 HALLINTA & MONITOROINTI',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'interaktiiviset',
+          label: 'Projektinhallinta',
+        },
+        {
+          type: 'doc',
+          id: 'lampotila',
+          label: 'Reaaliaikainen Seuranta',
+        },
+        {
+          type: 'link',
+          label: 'Tehtävägeneraattori (Admin)',
+          href: '/admin', // Ohjaa suoraan luomallesi admin-sivulle
+        },
+      ],
     },
     {
-      type: 'doc',
-      id: 'lampotila',
-      label: '🧮 Aika- ja Lämpölaskurit',
-    },
-    {
-      type: 'doc',
-      id: 'style-guide',
-      label: '🎨 Tyyliopas',
-    },
-    {
-      type: 'doc',
-      id: 'testi1',
-      label: '🧪 Testisivu',
+      type: 'category',
+      label: '🛠️ KEHITYS & TYÖKALUT',
+      collapsed: true, // Pidetään nämä piilossa oletuksena
+      items: [
+        {
+          type: 'doc',
+          id: 'style-guide',
+          label: '🎨 Tyyliopas',
+        },
+        {
+          type: 'doc',
+          id: 'testi1',
+          label: '🧪 Testisivu',
+        },
+      ],
     },
   ],
 };

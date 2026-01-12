@@ -69,3 +69,46 @@ body {
     @apply font-inter; /* Tämä asettaa oletusfontiksi Interin */
   }
 }
+
+/* Tämä vaikuttaa yömoodin oletusväreihin */
+[data-theme='dark'] {
+  --ifm-font-color: #ffffff; /* Leipäteksti täysin valkoiseksi */
+  --ifm-heading-color: #ffffff; /* Otsikot täysin valkoiseksi */
+  --ifm-color-emphasis-800: #f1f5f9; /* Slate-100 vastaava sävy */
+}
+
+/* Jos haluat pakottaa Tailwindin slate-900:n kaikille sivuille yömoodissa */
+[data-theme='dark'] body {
+  color: var(--ifm-font-color);
+}
+
+/* Pakotetaan "Light Card" sisällä oleva teksti tummaksi kaikissa tiloissa */
+.light-card-content h1,
+.light-card-content h2,
+.light-card-content h3,
+.light-card-content p {
+  color: #0f172a !important; /* slate-900 */
+}
+
+/* Jos haluat, että linkitkin pysyvät tummina */
+.light-card-content a {
+  color: #2563eb !important; /* blue-600 */
+}
+
+/* Lisää tämä custom.css -tiedostoon */
+.time-calculator-form input {
+  /* Pakotetaan tausta ja tekstiväri pysymään vakiona */
+  background-color: #ffffff !important;
+  color: #0f172a !important; /* slate-900 */
+}
+
+/* Tyylitellään placeholder, jotta se erottuu vaalealla pohjalla */
+.time-calculator-form input::placeholder {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Muutetaan focus-tilaa yömoodissa, jotta se on selkeä */
+[data-theme='dark'] .time-calculator-form input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}

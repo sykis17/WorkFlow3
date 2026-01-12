@@ -1,0 +1,13 @@
+[
+  {
+    "templateId": "tmpl-windows",
+    "category": "Asennus",
+    "title": "Ikkunoiden asennus",
+    "baseMaterials": [
+      { "item_name": "Uretaanivaahto", "quantity": 1, "unit": "plo/ikkuna" },
+      { "item_name": "Kiinnitysruuvit", "quantity": 8, "unit": "kpl/ikkuna" }
+    ],
+    "baseTools": ["Akkuporakone", "Vatupassi", "Vaahtopistooli"],
+    "instructions": "Varmista ristimitta ja pystysuoruus ennen kiinnitystä."
+  }
+]

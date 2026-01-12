@@ -1,0 +1,232 @@
+[
+  {
+    "id": "mass-1768248054879-1",
+    "title": "Asunto A1 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-2",
+    "title": "Asunto A2 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-3",
+    "title": "Asunto A3 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-4",
+    "title": "Asunto A4 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-5",
+    "title": "Asunto A5 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-6",
+    "title": "Asunto A6 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-7",
+    "title": "Asunto A7 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-8",
+    "title": "Asunto A8 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-9",
+    "title": "Asunto A9 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "mass-1768248054879-10",
+    "title": "Asunto A10 - KPH",
+    "description": "VTT-sertifioitu asennus",
+    "steps": [
+      {
+        "label": "a) Pohjien puhdistus",
+        "detail": "Imurointi ja tartunnan tarkistus",
+        "requirePhoto": true
+      },
+      {
+        "label": "b) Primerointi",
+        "detail": "Levitys telalla, kuivumisaika 2h",
+        "requirePhoto": false
+      },
+      {
+        "label": "c) Vedeneristys 1. kerros",
+        "detail": "Kulmavahvikkeet asennettu",
+        "requirePhoto": true
+      }
+    ],
+    "status": "active"
+  }
+]

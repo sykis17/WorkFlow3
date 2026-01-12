@@ -1,9 +1,9 @@
 const config = {
-  title: 'Maritime Portal',
-  tagline: 'Modernizing Maritime Law',
-  url: 'https://sykis17.github.io', 
-  baseUrl: '/Maritime-Portal/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
-  projectName: 'Maritime-Portal',
+  title: 'WorkFlow3',
+  tagline: 'All-inclusive work flow reporting and monitoring',
+  url: 'https://github.com/sykis17/WorkFlow3.git', 
+  baseUrl: '/WorkFlow3/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
+  projectName: 'WorkFlow3',
   trailingSlash: false,
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin 
   onBrokenMarkdownLinks: 'ignore',
@@ -11,7 +11,7 @@ const config = {
 
 i18n: {
     defaultLocale: 'fi',
-    locales: ['fi', 'en'],
+    locales: ['fi', 'en', 'uk'],
     localeConfigs: {
       fi: {
         label: 'Suomi',
@@ -22,6 +22,11 @@ i18n: {
         label: 'English',
         direction: 'ltr',
         htmlLang: 'en-US',
+      },
+      uk: {
+        label: 'Ukraina',
+        direction: 'ltr',
+        htmlLang: 'uk-UK',
       },
     },
   },

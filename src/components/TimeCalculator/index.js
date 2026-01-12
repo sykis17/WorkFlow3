@@ -27,7 +27,7 @@ export default function TimeCalculator() {
 
   return (
     <div className="bg-black p-6 rounded-3xl border border-slate-200 shadow-sm max-w-md my-8">
-      <h3 className="text-xl font-black text-slate-900 mb-1">Työaikalaskin</h3>
+      <h3 className="text-xl font-black text-slate-500! mb-1">Työaikalaskin</h3>
       <p className="text-sm text-slate-500 mb-6">Lisää vuorot laskeaksesi kokonaisajan.</p>
 
       <div className="space-y-3 mb-6">
@@ -36,26 +36,20 @@ export default function TimeCalculator() {
             <input
               type="number"
               placeholder="h"
-              className="w-20 p-2 rounded-xl border border-slate-200 focus:border-blue-500 outline-none transition-all"
+              className="w-20 p-2 rounded-xl border border-slate-200 outline-none transition-all"
               value={row.h}
               onChange={(e) => updateRow(index, 'h', e.target.value)}
             />
-            <span className="font-bold text-slate-400">:</span>
+            {/* Käytetään slate-400 mutta pakotetaan se, jotta se ei muutu valkoiseksi yömoodissa */}
+            <span className="font-bold text-slate-400 dark:text-slate-400!"> : </span>
             <input
               type="number"
               placeholder="m"
-              className="w-20 p-2 rounded-xl border border-slate-200 focus:border-blue-500 outline-none transition-all"
+              className="w-20 p-2 rounded-xl border border-slate-200 outline-none transition-all"
               value={row.m}
               onChange={(e) => updateRow(index, 'm', e.target.value)}
             />
-            {rows.length > 1 && (
-              <button 
-                onClick={() => removeRow(index)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-400 hover:bg-red-100 hover:text-red-600 transition-colors cursor-pointer border-none"
-              >
-                ✕
-              </button>
-            )}
+            {/* ... poistonappi ... */}
           </div>
         ))}
       </div>
