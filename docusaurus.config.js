@@ -8,6 +8,7 @@ const config = {
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin 
   onBrokenMarkdownLinks: 'ignore',
   organizationName: 'sykis17',
+  deploymentBranch: 'gh-pages',
 
 i18n: {
     defaultLocale: 'fi',
