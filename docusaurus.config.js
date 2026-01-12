@@ -1,14 +1,18 @@
 const config = {
   title: 'WorkFlow3',
   tagline: 'All-inclusive work flow reporting and monitoring',
-  url: 'https://github.com/sykis17/WorkFlow3.git', 
+  favicon: 'img/favicon.ico',
+
+  url: 'https://sykis17.github.io', 
+
   baseUrl: '/WorkFlow3/', // TÄRKEÄ: Varmista että tämä on sama kuin GitHub-reposi nimi!
+
+  organizationName: 'sykis17',
   projectName: 'WorkFlow3',
+  deploymentBranch: 'gh-pages',
   trailingSlash: false,
   onBrokenLinks: 'ignore', // Estää kaatumisen rikkinäisiin 
   onBrokenMarkdownLinks: 'ignore',
-  organizationName: 'sykis17',
-  deploymentBranch: 'gh-pages',
 
 i18n: {
     defaultLocale: 'fi',
