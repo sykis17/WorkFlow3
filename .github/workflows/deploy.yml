@@ -35,11 +35,10 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        # --install-links auttaa joissain ympäristöissä, 
-        # mutta tärkeintä on että lock-file on kunnossa
         run: |
           npm install --include=optional
-          npm install @tailwindcss/postcss lightningcss-linux-x64-gnu
+          # Pakotetaan Linux-kohtaiset natiivikirjastot
+          npm install @css-inline/css-inline-linux-x64-gnu lightningcss-linux-x64-gnu @next/swc-linux-x64-gnu
 
       - name: Build Docusaurus website
         # Tämä luo 'build'-kansion
