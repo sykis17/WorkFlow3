@@ -1,2 +1,7 @@
-// Esimerkki monitoring-sivulle:
-<ProgressBar completed={tasks.filter(t => t.status === 'done').length} total={tasks.length} />
+---
+title: Monitoring
+---
+
+import ProgressBar from '@site/src/components/ProgressBar'; 
+
+<ProgressBar progress={50} />

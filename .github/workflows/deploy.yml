@@ -35,10 +35,7 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: |
-          npm install --include=optional
-          # Pakotetaan Linux-kohtaiset natiivikirjastot
-          npm install @css-inline/css-inline-linux-x64-gnu lightningcss-linux-x64-gnu @next/swc-linux-x64-gnu
+        run: npm install --force
 
       - name: Build Docusaurus website
         # Tämä luo 'build'-kansion

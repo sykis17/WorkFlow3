@@ -1,6 +1,7 @@
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {},
+    // TÄMÄ RIVI MUUTTUU:
+    tailwindcss: {}, 
     autoprefixer: {},
   },
 };

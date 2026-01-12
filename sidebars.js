@@ -25,11 +25,6 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'interaktiiviset',
-          label: 'Projektinhallinta',
-        },
-        {
-          type: 'doc',
           id: 'lampotila',
           label: 'Reaaliaikainen Seuranta',
         },
