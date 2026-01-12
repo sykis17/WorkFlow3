@@ -37,7 +37,9 @@ jobs:
       - name: Install dependencies
         # --install-links auttaa joissain ympäristöissä, 
         # mutta tärkeintä on että lock-file on kunnossa
-        run: npm install
+        run: |
+          npm install --include=optional
+          npm install @tailwindcss/postcss lightningcss-linux-x64-gnu
 
       - name: Build Docusaurus website
         # Tämä luo 'build'-kansion

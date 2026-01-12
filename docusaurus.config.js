@@ -15,6 +15,7 @@ const config = {
   trailingSlash: false, 
 
   onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'log',
 
   i18n: {
     defaultLocale: 'fi',
@@ -45,7 +46,6 @@ const config = {
 
   markdown: {
     mermaid: true,
-    onBrokenMarkdownLinks: 'log', 
   },
 
   themes: [
