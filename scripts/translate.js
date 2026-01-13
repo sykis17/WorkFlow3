@@ -5,7 +5,7 @@ const path = require("path");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function translateText(text, targetLang) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
   const prompt = `Olet ammattimainen kääntäjä. Käännä tämä Markdown-tiedosto kielelle ${targetLang}. 
                   SÄILYTÄ kaikki Frontmatter-tiedot (--- välissä olevat tiedot) ja Markdown-syntaksi. 
                   Älä käännä teknisiä avainsanoja tai tiedostopolkuja.
@@ -68,8 +68,9 @@ if (files.length === 0) {
 files.forEach(file => {
   if (file.endsWith('.md') || file.endsWith('.mdx')) {
     processFile(file).catch(err => {
-      console.error(`Virhe tiedostossa ${file}:`, err);
-      process.exit(1);
+      console.error(`❌ Virhe käsiteltäessä tiedostoa ${file}:`);
+      console.error(err.message);
+      // Älä tapa koko prosessia heti, jotta muut tiedostot voidaan ehkä kääntää
     });
   }
 });
