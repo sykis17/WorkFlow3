@@ -16,8 +16,13 @@ async function translateText(text, targetLang) {
 }
 
 async function processFile(relativeFsPath) {
+  console.log(`Aloitetaan käsittely tiedostolle: ${relativeFsPath}`);
   const fullPath = path.join(process.cwd(), relativeFsPath);
-  if (!fs.existsSync(fullPath)) return;
+  
+  if (!fs.existsSync(fullPath)) {
+    console.log(`Virhe: Tiedostoa ei löydy polusta ${fullPath}`);
+    return;
+  }
 
   const content = fs.readFileSync(fullPath, "utf-8");
   const targetLangs = [
