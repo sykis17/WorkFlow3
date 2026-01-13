@@ -19,7 +19,7 @@ async function askAI() {
     const responseContext = await fetch('/WorkFlow3/ai-context/CODE_MAP.txt');
     const codeContext = await responseContext.text();
 
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
     const prompt = `
       Olet WorkFlow3-asiantuntija. Tässä on koodikartta projektista:
