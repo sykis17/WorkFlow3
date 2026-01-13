@@ -1,0 +1,281 @@
+PROJECT CONTEXT FOR AI ASSISTANT:
+
+--- FILE: docusaurus.config.js ---
+// @ts-check
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'WorkFlow3',
+  tagline: 'All-inclusive work flow reporting and monitoring',
+  favicon: 'img/favicon.ico',
+
+  url: 'https://sykis17.github.io', 
+  baseUrl: '/WorkFlow3/', 
+
+  organizationName: 'sykis17',
+  projectName: 'WorkFlow3',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false, 
+
+  onBrokenLinks: 'warn',
+
+  i18n: {
+    defaultLocale: 'fi',
+    locales: ['fi', 'en', 'uk'],
+    localeConfigs: {
+      fi: { label: 'Suomi', htmlLang: 'fi-FI' },
+      en: { label: 'English', htmlLang: 'en-US' },
+      uk: { label: 'Українська', htmlLang: 'uk-UA' },
+    },
+  },
+  
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/', 
+        },
+        blog: false, 
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      }),
+    ],
+  ],
+
+  customFields: {
+    geminiApiKey: process.env.GEMINI_API_KEY,
+  },
+
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'log',
+    },
+  },
+
+  themes: [
+    '@docusaurus/theme-mermaid',
+    '@docusaurus/theme-live-codeblock',
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["fi", "en"], // Huom: ukrainaa ei välttämättä tueta natiivisti tässä pluginissa, fi/en riittää
+        docsRouteBasePath: "/", 
+        indexDocs: true,
+        indexBlog: false,
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: true,
+      },
+      mermaid: {
+        theme: { light: 'neutral', dark: 'forest' },
+      },
+      navbar: {
+        title: 'WorkFlow3',
+        items: [
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Dokumentaatio',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value: '<button onclick="window.print()" style="cursor:pointer; background: #2563eb; color: white; border: none; padding: 6px 15px; border-radius: 8px; font-weight: bold; margin-left: 10px; font-size: 12px; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">📄 PDF / Tulosta</button>',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        copyright: `Copyright © ${new Date().getFullYear()} WorkFlow3. Built with Docusaurus.`,
+      },
+    }),
+};
+
+module.exports = config;
+
+--- FILE: src/components/AIAssistant.js ---
+import React, { useState } from 'react';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+export default function AIAssistant() {
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { siteConfig } = useDocusaurusContext();
+  const apiKey = siteConfig.customFields.geminiApiKey;
+
+  // HUOM: Tuo API-avain myöhemmin .env-tiedostosta
+  const genAI = new GoogleGenerativeAI(apiKey);
+
+  async function askAI() {
+    if (!input) return;
+    setLoading(true);
+    try {
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      
+      // Tässä syötetään "konteksti" eli AI_INSTRUCTIONS
+      const prompt = `
+        Olet WorkFlow3-projektin asiantuntija-apulainen. 
+        Käytä vastauksissasi teknistä mutta selkeää kieltä.
+        Käyttäjän kysymys: ${input}
+      `;
+
+      const result = await model.generateContent(prompt);
+      const text = result.response.text();
+      setResponse(text);
+    } catch (error) {
+      setResponse("Virhe AI-yhteydessä: " + error.message);
+    }
+    setLoading(false);
+  }
+
+  return (
+    <div className="p-6 border border-blue-500/30 rounded-xl bg-slate-900 shadow-xl my-4 font-inter">
+      <h3 className="text-blue-400 mb-4 flex items-center gap-2">
+        <span>🤖</span> WorkFlow3 AI-Assistentti
+      </h3>
+      
+      <textarea
+        className="w-full p-3 bg-slate-800 border border-slate-700 rounded-lg text-white mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        rows="3"
+        placeholder="Kysy koodista tai ylläpidosta..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+
+      <button
+        onClick={askAI}
+        disabled={loading}
+        className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-lg font-bold transition-all disabled:opacity-50"
+      >
+        {loading ? 'Analysoidaan...' : 'Kysy AI:lta'}
+      </button>
+
+      {response && (
+        <div className="mt-6 p-4 bg-slate-800/50 rounded-lg border-l-4 border-blue-500 text-slate-200 text-sm leading-relaxed whitespace-pre-wrap">
+          {response}
+        </div>
+      )}
+    </div>
+  );
+}
+
+--- FILE: scripts/translate.js ---
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const fs = require("fs");
+const path = require("path");
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+async function translateText(text, targetLang) {
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  
+  const prompt = `Olet ammattimainen kääntäjä. Käännä tämä Markdown-tiedosto kielelle ${targetLang}. 
+    SÄILYTÄ kaikki Frontmatter-tiedot (--- välissä olevat tiedot) ja Markdown-syntaksi. 
+    
+    LISÄÄ tiedoston loppuun seuraava osio täsmälleen näin:
+    
+    ---
+    ### 🛡️ Quality Assurance & Approvals
+    *This content was translated from Finnish to ${targetLang} and generated by AI v.1.*
+    - [ ] 🛠️ **Developer:** (Verified technical logic)
+    - [ ] 📋 **Foreman:** (Approved for site use)
+    - [ ] 🛡️ **Insurance:** (Risk assessment validated)
+    - [ ] 👷 **Worker:** (Instructions understood)
+
+    Teksti: ${text}`;
+  
+  const result = await model.generateContent(prompt);
+  return result.response.text();
+}
+
+async function processFile(relativeFsPath) {
+  console.log(`--- Ksitellään: ${relativeFsPath} ---`);
+  
+  // Puhdistetaan polku (poistetaan mahdolliset ./ alusta)
+  const cleanRelativePath = relativeFsPath.replace(/^\.\//, '');
+  const fullPath = path.resolve(process.cwd(), cleanRelativePath);
+  
+  if (!fs.existsSync(fullPath)) {
+    console.error(`❌ Tiedostoa ei löydy: ${fullPath}`);
+    return;
+  }
+
+  const content = fs.readFileSync(fullPath, "utf-8");
+
+  // LOOPIN ESTO
+  if (content.includes("generated by AI v.1")) {
+    console.log(`⏭️ Hypätään yli: ${cleanRelativePath} (Jo käännetty)`);
+    return;
+  }
+
+  const targetLangs = [
+    { code: 'en', name: 'English' },
+    { code: 'uk', name: 'Ukrainian' }
+  ];
+
+  for (const lang of targetLangs) {
+    try {
+      console.log(`🌍 Käännetään (${lang.name})...`);
+      const translation = await translateText(content, lang.name);
+
+      const fileName = path.basename(cleanRelativePath);
+      // Lasketaan alikansio (esim. docs/tyomaa/ohje.md -> tyomaa)
+      const subDir = path.dirname(cleanRelativePath).replace(/^docs\/?/, '');
+      
+      const targetDir = path.resolve(
+        process.cwd(), 
+        'i18n', lang.code, 'docusaurus-plugin-content-docs', 'current', subDir
+      );
+
+      if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true });
+      }
+
+      const finalPath = path.join(targetDir, fileName);
+      fs.writeFileSync(finalPath, translation);
+      console.log(`✅ Tallennettu: ${finalPath}`);
+    } catch (err) {
+      console.error(`❌ Virhe (${lang.name}):`, err.message);
+    }
+  }
+}
+
+async function run() {
+  const files = process.argv.slice(2);
+  if (files.length === 0) {
+    console.log("Ei muuttuneita tiedostoja.");
+    return;
+  }
+  for (const file of files) {
+    if (file.endsWith('.md') || file.endsWith('.mdx')) {
+      await processFile(file);
+    }
+  }
+}
+
+run().catch(console.error);
+
+--- FILE: docs/ai-context/AI_INSTRUCTIONS.md ---
+
+
