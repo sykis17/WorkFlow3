@@ -1,6 +1,10 @@
-PROJECT CONTEXT FOR AI ASSISTANT:
+# Project Context for AI Assistant
 
---- FILE: docusaurus.config.js ---
+> Tämä tiedosto on automaattisesti generoitu koodikartta AI:lle.
+
+## File: docusaurus.config.js
+
+```javascript
 // @ts-check
 
 /** @type {import('@docusaurus/types').Config} */
@@ -111,8 +115,11 @@ const config = {
 };
 
 module.exports = config;
+```
 
---- FILE: src/components/AIAssistant.js ---
+## File: src/components/AIAssistant.js
+
+```javascript
 import React, { useState } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -179,8 +186,11 @@ export default function AIAssistant() {
     </div>
   );
 }
+```
 
---- FILE: scripts/translate.js ---
+## File: scripts/translate.js
+
+```javascript
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 const path = require("path");
@@ -275,7 +285,11 @@ async function run() {
 }
 
 run().catch(console.error);
+```
 
---- FILE: docs/ai-context/AI_INSTRUCTIONS.md ---
+## File: docs/ai-context/AI_INSTRUCTIONS.md
 
+```javascript
+
+```
 
