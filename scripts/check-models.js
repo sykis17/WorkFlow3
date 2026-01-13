@@ -1,5 +1,8 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+const dns = require('node:dns');
+dns.setDefaultResultOrder('ipv4first');
+
 async function listModels() {
   // Testataan suoraan kirjaston kautta, ei fetchillä
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

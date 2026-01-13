@@ -1,30 +1,28 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+const dns = require('node:dns');
+dns.setDefaultResultOrder('ipv4first');const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require("fs");
 const path = require("path");
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function translateText(text, targetLang) {
-  // 1. Käytetään MALLIA gemini-1.5-flash (tämä on varma valinta)
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  // Käytetään suoraa API-kutsua ilman kirjastoa
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
   
-  const prompt = `Olet ammattimainen kääntäjä. Käännä tämä Markdown-tiedosto kielelle ${targetLang}. 
-                  SÄILYTÄ kaikki Frontmatter-tiedot (--- välissä olevat tiedot) ja Markdown-syntaksi. 
-                  Teksti: ${text}`;
-  
-  try {
-    // 2. Tehdään kutsu
-    const result = await model.generateContent(prompt);
-    // 3. Odotetaan vastausta (tämä on kriittinen muutos)
-    const response = await result.response;
-    const translatedText = response.text();
-    
-    return translatedText;
-  } catch (err) {
-    console.error(`Virhe Gemini-kutsussa: ${err.message}`);
-    throw err;
-  }
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: `Käännä Markdown kielelle ${targetLang}: ${text}` }] }]
+    })
+  });
+
+  const data = await response.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.candidates[0].content.parts[0].text;
 }
+
 
 async function processFile(relativeFsPath) {
   console.log(`--- Ksitellään: ${relativeFsPath} ---`);
