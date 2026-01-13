@@ -11,24 +11,22 @@ export default function AIAssistant() {
   const apiKey = siteConfig.customFields.geminiApiKey;
   const genAI = new GoogleGenerativeAI(apiKey);
 
-  async function askAI() {
-    if (!input) return;
-    setLoading(true);
-    try {
-      // 1. Haetaan CODE_MAP.md tiedoston sisältö, jotta AI ymmärtää koodin
-      // Huom: Tämä hakee sen julkisesta URL:sta buildin jälkeen
-      const contextRes = await fetch('/WorkFlow3/docs/ai-context/CODE_MAP.txt').catch(() => null);
-      const codeContext = contextRes ? await contextRes.text() : "Koodikarttaa ei löytynyt.";
+async function askAI() {
+  if (!input) return;
+  setLoading(true);
+  try {
+    // Haetaan koodikonteksti staattisesta tiedostosta
+    const responseContext = await fetch('/WorkFlow3/ai-context/CODE_MAP.txt');
+    const codeContext = await responseContext.text();
 
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      
-      const prompt = `
-        Olet WorkFlow3-projektin asiantuntija. 
-        Tässä on projektin tekninen koodikartta:
-        ${codeContext.substring(0, 5000)} 
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    
+    const prompt = `
+      Olet WorkFlow3-asiantuntija. Tässä on koodikartta projektista:
+      ${codeContext.substring(0, 5000)} // Rajataan pituutta varmuuden vuoksi
 
-        Käyttäjän kysymys: ${input}
-      `;
+      Kysymys: ${input}
+    `;
 
       const result = await model.generateContent(prompt);
       const text = result.response.text();
