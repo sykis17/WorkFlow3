@@ -25,7 +25,7 @@ const config = {
       uk: { label: 'Українська', htmlLang: 'uk-UA' },
     },
   },
-
+  
   presets: [
     [
       'classic',
@@ -42,6 +42,10 @@ const config = {
       }),
     ],
   ],
+
+  customFields: {
+    geminiApiKey: process.env.GEMINI_API_KEY,
+  },
 
   markdown: {
     mermaid: true,

@@ -1,0 +1,44 @@
+name: AI Auto-Translate
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Tarvitaan, jotta näemme muutokset edelliseen commitiin
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install @google/generative-ai
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Haetaan listaus docs-kansiossa muuttuneista tiedostoista
+          echo "files=$(git diff --name-only HEAD^ HEAD | grep '^docs/' | xargs)" >> $GITHUB_OUTPUT
+
+      - name: Run Translation Script
+        if: steps.changed-files.outputs.files != ''
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          node scripts/translate.js ${{ steps.changed-files.outputs.files }}
+          
+      - name: Commit and Push
+        run: |
+          git config --global user.name "WorkFlow3 AI"
+          git config --global user.email "ai@workflow3.com"
+          git add i18n/
+          # Commit vain jos on muutoksia
+          git diff-index --quiet HEAD || git commit -m "AI: Päivitetty käännökset automaattisesti"
+          git push
