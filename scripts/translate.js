@@ -58,8 +58,18 @@ async function processFile(relativeFsPath) {
 
 // Haetaan muuttuneet tiedostot komentoriviltä (GitHub Actions syöttää nämä)
 const files = process.argv.slice(2);
+console.log("Käsiteltävät tiedostot:", files); // Tämä näkyy GitHubin lokissa
+
+if (files.length === 0) {
+  console.log("Ei muuttuneita tiedostoja käsiteltäväksi.");
+  process.exit(0);
+}
+
 files.forEach(file => {
   if (file.endsWith('.md') || file.endsWith('.mdx')) {
-    processFile(file).catch(err => console.error(`Virhe tiedostossa ${file}:`, err));
+    processFile(file).catch(err => {
+      console.error(`Virhe tiedostossa ${file}:`, err);
+      process.exit(1);
+    });
   }
 });

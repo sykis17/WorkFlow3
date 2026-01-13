@@ -11,7 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # Tarvitaan, jotta näemme muutokset edelliseen commitiin
+          fetch-depth: 0 # Haetaan koko historia, jotta diff onnistuu varmasti
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: docs/**/*.{md,mdx} # Seuraa vain docs-kansion md/mdx tiedostoja
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -21,18 +27,13 @@ jobs:
       - name: Install dependencies
         run: npm install @google/generative-ai
 
-      - name: Get changed files
-        id: changed-files
-        run: |
-          # Haetaan listaus docs-kansiossa muuttuneista tiedostoista
-          echo "files=$(git diff --name-only HEAD^ HEAD | grep '^docs/' | xargs)" >> $GITHUB_OUTPUT
-
       - name: Run Translation Script
-        if: steps.changed-files.outputs.files != ''
+        if: steps.changed-files.outputs.any_changed == 'true'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          node scripts/translate.js ${{ steps.changed-files.outputs.files }}
+          # Käytetään tj-actionsin tarjoamaa tiedostolistaa
+          node scripts/translate.js ${{ steps.changed-files.outputs.all_changed_files }}
           
       - name: Commit and Push
         run: |
