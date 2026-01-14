@@ -37,7 +37,8 @@ const sidebars = {
       label: '🛠️ INFO',
       collapsed: true,
       items: [
-        'info/saadokset',
+        'info/style-guide',
+        'tyoaika',
       ],
     },
   ],
