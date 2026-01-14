@@ -10,6 +10,7 @@ const coreFiles = [
   'docusaurus.config.js',
   'src/components/AIAssistant.js',
   'scripts/translate.js',
+  'docs/intro.md',
   'docs/ai-context/AI_INSTRUCTIONS.md'
 ];
 
