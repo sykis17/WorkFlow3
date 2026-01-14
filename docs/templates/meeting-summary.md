@@ -2,12 +2,12 @@
 title: Asiakastapaamisen yhteenveto
 ---
 
-# 📝 Asiakastapaaminen: {{Kohde}}
+# 📝 Asiakastapaaminen: [KOHDE TÄHÄN]
 
 Tämä pohja on tarkoitettu asiantuntijoiden ja työnjohdon käyttöön. Täytä kohdat ja anna AI-assistentin luoda loppuraportti.
 
 ## Perustiedot
-- **Päivämäärä:** {{date}}
+- **Päivämäärä:** (Kirjaa päivä)
 - **Osallistujat:** - **Tapaamisen tyyppi:** (Kartoitus / Reklamaatio / Luovutus)
 
 ## Havainnot ja sovitut asiat
