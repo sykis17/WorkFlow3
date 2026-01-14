@@ -1,1 +1,0 @@
-![Prosessi Kaavio](/img/prosessikaavio.png)
