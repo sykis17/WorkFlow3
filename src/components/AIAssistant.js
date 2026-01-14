@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Tärkeä lisäys!
+import React, { useState } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function AIAssistant() {
@@ -12,12 +12,14 @@ export default function AIAssistant() {
   async function askAI() {
     if (!input) return;
     setLoading(true);
+    setResponse(''); // Tyhjennetään vanha vastaus uuden tieltä
+
     try {
-      // 1. Haetaan koodikonteksti staattisesta tiedostosta (huomioi alipolku)
+      // 1. Haetaan koodikonteksti
       const contextRes = await fetch('/WorkFlow3/ai-context/CODE_MAP.txt');
       const codeContext = contextRes.ok ? await contextRes.text() : "Kontekstia ei voitu ladata.";
 
-      // 2. Käytetään suoraa API-kutsua (vakaampi selaimessa)
+      // 2. API-kutsu
       const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-001:generateContent?key=${apiKey}`;
       
       const apiResponse = await fetch(url, {
@@ -26,7 +28,7 @@ export default function AIAssistant() {
         body: JSON.stringify({
           contents: [{ 
             parts: [{ 
-              text: `Olet WorkFlow3-projektin asiantuntija. Tässä on projektin koodikartta:\n${codeContext.substring(0, 100000)}\n\nKäyttäjän kysymys: ${input}` 
+              text: `Olet WorkFlow3-projektin asiantuntija. Projekti on vasta aluilla ja kaikki ongelma kohdat tullaan korjaamaan. Tässä on projektin koodikartta:\n${codeContext.substring(0, 100000)}\n\nKäyttäjän kysymys: ${input}` 
             }] 
           }]
         })
@@ -40,13 +42,22 @@ export default function AIAssistant() {
 
       const aiText = data.candidates[0].content.parts[0].text;
       setResponse(aiText);
+
     } catch (error) {
       console.error("AI Assistant Error:", error);
-      setResponse("Virhe: " + error.message);
+      if (error.message.includes('fetch')) {
+        setResponse("Yhteysvirhe: Tarkista internetyhteytesi tai kokeile myöhemmin uudelleen.");
+      } else if (error.message.includes('API key')) {
+        setResponse("Virhe: API-avain puuttuu tai on virheellinen.");
+      } else {
+        setResponse("Hups! Jotain meni vikaan: " + error.message);
+      }
+    } finally {
+      // Tämä suoritetaan AINA, oli virhe tai ei
+      setLoading(false); 
     }
-    setLoading(false);
   }
-
+    
   return (
     <div className="p-4 border border-blue-500 rounded-lg bg-slate-900 text-white shadow-2xl my-4">
       <h3 className="text-blue-400 flex items-center gap-2 mb-3">🤖 WorkFlow3 Assistentti</h3>

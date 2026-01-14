@@ -2,56 +2,29 @@ import React, { useState, useEffect } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import TaskCard from './TaskCard';
 
-export default function WorkerDashboard({ projectId }) {
-  const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState(null);
-  
-  // Luodaan varma polku JSON-tiedostoon Docusauruksen työkalulla
-  const jsonPath = useBaseUrl('/data/tasks.json');
-
-  useEffect(() => {
-    console.log("Yritetään hakea tiedostoa osoitteesta:", jsonPath);
-
-    fetch(jsonPath)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`Tiedostoa ei löytynyt (Status: ${res.status}). Tarkista static/data/tasks.json sijainti.`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Data ladattu onnistuneesti:", data);
-        setTasks(data);
-      })
-      .catch((err) => {
-        console.error("Luku epäonnistui:", err);
-        setError(err.message);
-      });
-  }, [jsonPath]);
-
-  if (error) {
-    return (
-      <div className="p-4 border-2 border-red-500 bg-red-50 text-red-700 rounded-lg">
-        <strong>Virhe:</strong> {error}
-      </div>
-    );
-  }
+export default function WorkerDashboard() {
+  const stats = [
+    { label: 'Aktiiviset tehtävät', value: '4', color: 'text-blue-400' },
+    { label: 'Tunnit tänään', value: '6.5h', color: 'text-green-400' },
+    { label: 'Turvahuomiot', value: '0', color: 'text-yellow-400' },
+  ];
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <h2 className="mb-6 text-2xl font-black text-slate-800 border-b-2 border-blue-500 pb-2">
-        Työmaan tehtävälista
-      </h2>
-      
-      {tasks.length > 0 ? (
-        tasks.map((task) => <TaskCard key={task.id} task={task} />)
-      ) : (
-        <div className="p-10 text-center border-2 border-dashed border-slate-200 rounded-xl">
-          <p className="text-slate-500 italic font-medium text-lg">
-            Ei tehtäviä näkyvissä. Varmista, että tasks.json-tiedostossa on sisältöä.
-          </p>
-        </div>
-      )}
+    <div className="bg-slate-800 p-5 rounded-xl border border-slate-700 shadow-lg">
+      <h4 className="text-white mb-4 border-b border-slate-700 pb-2 flex items-center gap-2">
+        👷 Työntekijän näkymä
+      </h4>
+      <div className="grid grid-cols-1 gap-3">
+        {stats.map((stat, i) => (
+          <div key={i} className="flex justify-between items-center bg-slate-900 p-3 rounded-lg">
+            <span className="text-slate-400 text-sm">{stat.label}</span>
+            <span className={`font-bold ${stat.color}`}>{stat.value}</span>
+          </div>
+        ))}
+      </div>
+      <button className="w-full mt-4 bg-blue-600 text-white text-xs py-2 rounded hover:bg-blue-500 transition-colors">
+        Kirjaa uusi tapahtuma
+      </button>
     </div>
   );
 }

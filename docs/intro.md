@@ -1,29 +1,13 @@
 ---
 sidebar_position: 1
 ---
+
 import WorkerDashboard from '@site/src/components/WorkerDashboard';
+import OperationalDashboard from '@site/src/components/OperationalDashboard2';
 
-# Aktiiviset työtehtävät
+# Tervetuloa
 
-Tässä on listattu sinulle määritetyt tehtävät tässä kohteessa.
-
-<WorkerDashboard projectId={1} />
-import OperationalDashboard from '@site/src/components/OperationalDashboard';
-
-# Tervetuloa / Welcome
-
-<OperationalDashboard />
-
-Tämä portaali yhdistää lainsäädännön ja reaaliaikaisen operatiivisen datan.
-
-:::info TIETOA
-Tämä portaali modernisoi vuoden 1841 lakitekstejä.
-:::
-
-:::tip VINKKI
-Voit etsiä termejä oikean yläkulman hakupalkista (asennetaan kohta!).
-:::
-
-:::danger VAROITUS
-Alkuperäinen teksti saattaa sisältää vanhentuneita oikeudellisia neuvoja.
-:::
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+  <WorkerDashboard />
+  <OperationalDashboard />
+</div>
