@@ -26,7 +26,7 @@ export default function AIAssistant() {
         body: JSON.stringify({
           contents: [{ 
             parts: [{ 
-              text: `Olet WorkFlow3-projektin asiantuntija. Tässä on projektin koodikartta:\n${codeContext.substring(0, 5000)}\n\nKäyttäjän kysymys: ${input}` 
+              text: `Olet WorkFlow3-projektin asiantuntija. Tässä on projektin koodikartta:\n${codeContext.substring(0, 100000)}\n\nKäyttäjän kysymys: ${input}` 
             }] 
           }]
         })

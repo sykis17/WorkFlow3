@@ -14,7 +14,7 @@ const config = {
   deploymentBranch: 'gh-pages',
   trailingSlash: false, 
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
 
   i18n: {
     defaultLocale: 'fi',
@@ -61,7 +61,7 @@ const config = {
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
-        language: ["fi", "en"], // Huom: ukrainaa ei välttämättä tueta natiivisti tässä pluginissa, fi/en riittää
+        language: ["fi", "en", "uk"], // Huom: ukrainaa ei välttämättä tueta natiivisti tässä pluginissa, fi/en riittää
         docsRouteBasePath: "/", 
         indexDocs: true,
         indexBlog: false,
