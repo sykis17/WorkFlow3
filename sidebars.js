@@ -11,11 +11,7 @@ const sidebars = {
       label: '👷 KENTTÄTYÖT',
       collapsed: false,
       items: [
-        {
-          type: 'doc',
-          id: 'koonti',
-          label: 'Työntekijän Dashboard',
-        },
+        'worker/työvaiheet', // Viittaa docs/worker/työvaiheet.md
       ],
     },
     {
@@ -23,33 +19,25 @@ const sidebars = {
       label: '👔 HALLINTA & MONITOROINTI',
       collapsed: false,
       items: [
-        {
-          type: 'doc',
-          id: 'lampotila',
-          label: 'Reaaliaikainen Seuranta',
-        },
-        {
-          type: 'link',
-          label: 'Tehtävägeneraattori (Admin)',
-          href: '/admin', // Ohjaa suoraan luomallesi admin-sivulle
-        },
+        'managment/koonti', // Jos siirsit koonti.mdx:n tänne, muuten tarkista polku
+        'lampotila',       // Jos tämä on suoraan docs/ juuressa
       ],
     },
     {
       type: 'category',
-      label: '🛠️ KEHITYS & TYÖKALUT',
-      collapsed: true, // Pidetään nämä piilossa oletuksena
+      label: '📋 POHJAT & TEMPLATET',
+      collapsed: false,
       items: [
-        {
-          type: 'doc',
-          id: 'style-guide',
-          label: '🎨 Tyyliopas',
-        },
-        {
-          type: 'doc',
-          id: 'testi1',
-          label: '🧪 Testisivu',
-        },
+        'templates/logistics-check',
+        'templates/meeting-summary',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🛠️ INFO',
+      collapsed: true,
+      items: [
+        'info/saadokset',
       ],
     },
   ],
