@@ -38,7 +38,7 @@ const sidebars = {
       collapsed: true,
       items: [
         'info/style-guide',
-        'tyoaika',
+        'info/tyoaika',
       ],
     },
   ],
