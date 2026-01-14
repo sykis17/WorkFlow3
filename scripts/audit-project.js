@@ -36,7 +36,20 @@ async function runAudit() {
     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
   });
 
-  const data = await response.json();
+const data = await response.json();
+
+  // TARKISTUS: Jos API palauttaa virheen (esim. avainväärin tai kiintiö täynnä)
+  if (data.error) {
+    console.error("❌ Gemini API Virhe:", JSON.stringify(data.error, null, 2));
+    return;
+  }
+
+  // TARKISTUS: Jos vastaus on tyhjä (esim. turvasuodatin esti vastauksen)
+  if (!data.candidates || !data.candidates[0]) {
+    console.error("⚠️ AI ei palauttanut vastausta. Raaka vastaus:", JSON.stringify(data, null, 2));
+    return;
+  }
+
   console.log("\n--- AI:n ANALYYSI JA KORJAUSEHDOTUKSET --- \n");
   console.log(data.candidates[0].content.parts[0].text);
 }
