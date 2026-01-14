@@ -18,11 +18,10 @@ const config = {
 
   i18n: {
     defaultLocale: 'fi',
-    locales: ['fi', 'en', 'uk'],
+    locales: ['fi', 'en'],
     localeConfigs: {
       fi: { label: 'Suomi', htmlLang: 'fi-FI' },
       en: { label: 'English', htmlLang: 'en-US' },
-      uk: { label: 'Українська', htmlLang: 'uk-UA' },
     },
   },
   
