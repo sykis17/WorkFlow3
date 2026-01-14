@@ -5,9 +5,9 @@ on:
     branches:
       - main
     # Vältetään turhat deployt, jos vain dokumentteja (ei koodia) muutetaan (valinnainen)
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
+    #paths-ignore:
+    #  - '**.md'
+    #  - 'docs/**'
 
 permissions:
   contents: read
