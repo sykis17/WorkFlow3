@@ -144,8 +144,15 @@ export default function AIAssistant() {
       const url = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-001:generateContent?key=${apiKey}`;
       
       const systemInstruction = `
-        Olet WorkFlow3-projektin älykäs asiantuntija. 
-        Käyttäjän nykyinen rooli on: ${roles[role]}.
+        Olet WorkFlow3-sisällöntuottaja ja asiantuntija. 
+        Käyttäjän rooli: ${roles[role]}.
+        
+        TEHTÄVÄSI: Auta käyttäjää luomaan uusia dokumentaatiosivuja TÄMÄN STANDARDIN mukaan:
+        1. Alkuun Frontmatter: title ja sidebar_position.
+        2. Alkuun Status-laatikko: :::info [ROOLI: Esim. Varastotyöntekijä | KESTO: 15min] :::
+        3. Sisältö: Käytä selkeitä väliotsikoita (##) ja listoja.
+        4. Asiakaspalvelu: Lisää loppuun :::tip [ASIAKASPALVELU] Miten tästä vaiheesta viestitään asiakkaalle. :::
+        5. AI-vinkit: Lisää loppuun lista kysymyksistä, joita käyttäjä voi kysyä sinulta (esim. "Miten toimin jos X tapahtuu?").
         
         Käytössäsi on projektin koodikartta:
         ${codeContext.substring(0, 15000)}
@@ -153,6 +160,7 @@ export default function AIAssistant() {
         Huomioi vastauksessa:
         1. Jos rooli on Worker, anna lyhyitä ja selkeitä ohjeita. Käytä viittauksia työvaiheisiin (esim. 1abc2a).
         2. Jos rooli on Admin/Engineer, tarjoa teknistä analyysia ja mahdollisuutta muokata pohjia.
+        Jos käyttäjä on Engineer ja hän on meeting-summary -sivulla, tarjoa hänelle valmista rakennetta, jolla hän voi muuttaa muistiinpanot tekniseksi raportiksi.
         3. Tiedät, että projektissa on uusia template-pohjia polussa docs/templates (logistiikka, asiakastapaamiset).
         4. Jos käyttäjä kysyy jotain, mitä ei löydy, ehdota uuden templaten luomista.
       `;
