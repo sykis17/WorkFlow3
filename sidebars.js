@@ -19,7 +19,7 @@ const sidebars = {
       label: '👔 HALLINTA & MONITOROINTI',
       collapsed: false,
       items: [
-        'managment/koonti', // Jos siirsit koonti.mdx:n tänne, muuten tarkista polku
+        'management/koonti', // Jos siirsit koonti.mdx:n tänne, muuten tarkista polku
         'lampotila',       // Jos tämä on suoraan docs/ juuressa
       ],
     },
