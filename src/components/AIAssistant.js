@@ -18,7 +18,7 @@ export default function AIAssistant() {
       const codeContext = contextRes.ok ? await contextRes.text() : "Kontekstia ei voitu ladata.";
 
       // 2. Käytetään suoraa API-kutsua (vakaampi selaimessa)
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+      const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
       
       const apiResponse = await fetch(url, {
         method: 'POST',
