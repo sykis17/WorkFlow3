@@ -1,7 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-const dns = require('node:dns');
-dns.setDefaultResultOrder('ipv4first');import React, { useState } from 'react';
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
